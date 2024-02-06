@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour
         transform.Translate(Vector2.right * moveX * Time.deltaTime * playerSpeed);
 
         {
-            // Call jump function if character jumps
+            // Call jump function if character jumps off ground
             if (Input.GetKeyDown(KeyCode.Space) && isOnGround)
             {
                 playerRb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
