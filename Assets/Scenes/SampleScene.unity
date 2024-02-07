@@ -272,11 +272,11 @@ Transform:
   m_GameObject: {fileID: 600423151}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0.5, z: 0}
+  m_LocalPosition: {x: -0.5, y: -3.5, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1318244963}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &600423156
 MonoBehaviour:
@@ -294,7 +294,7 @@ MonoBehaviour:
   playerSpeed: 8
   moveX: 0
   leftBound: 0
-  rightBound: 0
+  rightBound: 7
   jumpForce: 30
   gravityModifier: 10
   spriteRenderer: {fileID: 600423158}
@@ -455,43 +455,11 @@ MonoBehaviour:
   boxPrefab: {fileID: 4353120323942077935, guid: 2141b2b9aff7852438b2bbb28bdcc70a, type: 3}
   coinPrefab: {fileID: 1910747010610488965, guid: f96d988252424d947aed86c8f32b09a4, type: 3}
   startDelay: 1
-  spawnInterval: 1.5
+  spawnInterval: 5
   boxMinScale: 1
   boxMaxScale: 5
   minCoinY: -3
   maxCoinY: 3
---- !u!1 &1318244962
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1318244963}
-  m_Layer: 0
-  m_Name: Player
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1318244963
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1318244962}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1, y: -4, z: -2}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 600423154}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2052340881
 GameObject:
   m_ObjectHideFlags: 0
@@ -628,5 +596,5 @@ SceneRoots:
   m_Roots:
   - {fileID: 519420032}
   - {fileID: 2052340884}
-  - {fileID: 1318244963}
   - {fileID: 801031837}
+  - {fileID: 600423154}
