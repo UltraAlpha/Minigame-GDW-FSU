@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
 
     // Rigidbody gameObject for jump physics. Implemented.
     public Rigidbody2D playerRb;
+    public Animator animator;
 
     // Horizontal movement variables. Implemented.
     public int playerSpeed = 10;
@@ -45,6 +46,9 @@ public class PlayerController : MonoBehaviour
 
     // Down key hold boolean. Returns true if held. Locks other keys if true.
     public bool susMode = false;
+
+    // Boolean to check if sprite should be flipped. Should be set to true if moveX < 0, and false if moveX > 0.
+    public bool isFlipped = false;
 
     // Start is called before the first frame update
     void Start()
@@ -82,6 +86,10 @@ public class PlayerController : MonoBehaviour
                 transform.parent = null;
             }
         }
+
+        animator.SetBool("player_run", moveX > 0 || moveX < 0);
+        animator.SetBool("player_jump", isJumping);
+        animator.SetBool("player_sus", susMode);
     }
 
     void PlayerMove()
@@ -91,6 +99,14 @@ public class PlayerController : MonoBehaviour
         {
             // Detect horizontal input
             moveX = Input.GetAxis("Horizontal");
+
+            if (moveX < 0 && !isFlipped){
+                isFlipped = true;
+                Flip();
+            } else if (moveX > 0 && isFlipped){
+                isFlipped = false;
+                Flip();
+            }
 
             // Move player left or right depending on moveX and playerSpeed
             transform.Translate(Vector2.right * moveX * Time.deltaTime * playerSpeed);
@@ -136,6 +152,12 @@ public class PlayerController : MonoBehaviour
             transform.parent = null;
             }
 
+    }
+
+    void Flip(){
+        Vector2 scale = transform.localScale;
+        scale.x *= -1;
+        transform.localScale = scale;
     }
 
     // Move player with box if they are standing on it

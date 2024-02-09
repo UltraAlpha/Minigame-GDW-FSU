@@ -229,6 +229,7 @@ GameObject:
   - component: {fileID: 600423158}
   - component: {fileID: 600423157}
   - component: {fileID: 600423159}
+  - component: {fileID: 600423160}
   m_Layer: 0
   m_Name: The Thief
   m_TagString: Untagged
@@ -291,6 +292,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerRb: {fileID: 600423152}
+  animator: {fileID: 600423160}
   playerSpeed: 8
   moveX: 0
   leftBound: -9
@@ -303,6 +305,7 @@ MonoBehaviour:
   isJumping: 0
   touchGrass: 0
   susMode: 0
+  isFlipped: 0
 --- !u!61 &600423157
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -414,6 +417,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pc: {fileID: 0}
   pam: {fileID: 0}
+--- !u!95 &600423160
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600423151}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 461ad165dc3d6c344a2edbd05cbd0f32, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &801031835
 GameObject:
   m_ObjectHideFlags: 0
