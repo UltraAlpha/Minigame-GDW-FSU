@@ -48,7 +48,7 @@ public class PlayerAniManager : MonoBehaviour
                         // player_jump (is true if player is airborne. If pc.isOnGround is true, this is false. Associated with "jump_fall".)
                     // player_jump_rise (is true if player pressed jump. When jump velocity <= 0, this becomes false. Associated with "jump_rise".)
                     // player_run (is true if player is inputting left or right. If pc.isOnGround is true, animation will play. Associated with "run".) 
-                    // player_sus (is true if the player is holding down or S. Overrides all other bools except for player_hide if true. Associated with "sus".)
+                // player_sus (is true if the player is holding down or S. Overrides all other bools except for player_hide if true. Associated with "sus".)
 
             // Implement the player_hide bool here, but ONLY IF if background animator is created and implemented first.
 
