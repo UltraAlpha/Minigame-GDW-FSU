@@ -293,12 +293,16 @@ MonoBehaviour:
   playerRb: {fileID: 600423152}
   playerSpeed: 8
   moveX: 0
-  leftBound: 0
+  leftBound: -9
   rightBound: 7
   jumpForce: 30
   gravityModifier: 10
-  spriteRenderer: {fileID: 600423158}
-  newSprite: {fileID: 21300000, guid: 7fa2e2bd18a72a34a95c9be0277082df, type: 3}
+  currentOneWayPlatform: {fileID: 0}
+  playerCollider: {fileID: 600423157}
+  isOnGround: 0
+  isJumping: 0
+  touchGrass: 0
+  susMode: 0
 --- !u!61 &600423157
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -408,6 +412,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d78a8e9fa2e17754c91b22a11ad3c79b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pc: {fileID: 0}
+  pam: {fileID: 0}
 --- !u!1 &801031835
 GameObject:
   m_ObjectHideFlags: 0
@@ -455,7 +461,7 @@ MonoBehaviour:
   boxPrefab: {fileID: 4353120323942077935, guid: 2141b2b9aff7852438b2bbb28bdcc70a, type: 3}
   coinPrefab: {fileID: 1910747010610488965, guid: f96d988252424d947aed86c8f32b09a4, type: 3}
   startDelay: 1
-  spawnInterval: 5
+  spawnInterval: 1.5
   boxMinScale: 1
   boxMaxScale: 5
   minCoinY: -3
@@ -473,7 +479,7 @@ GameObject:
   - component: {fileID: 2052340882}
   m_Layer: 0
   m_Name: Background
-  m_TagString: Untagged
+  m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

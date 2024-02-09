@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8257e216f2ca1544ab0e458ea98c585d
+guid: 6593f080df94dce4c85ff6a609ecff23
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -95,7 +95,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638429333642974555
+  platformSettingsDirtyTick: 638429333855665490
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -119,18 +119,18 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: nice_Frame_0
+  - name: sus
     originalName: 
-    pivot: {x: 0.5, y: -0.15384616}
+    pivot: {x: 0.53333336, y: 0}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 16
-      height: 13
-    spriteID: 17ba8c79550635342a7de7ebb9b9b43c
+      width: 15
+      height: 14
+    spriteID: ccf84f750d4806f478e1d40d491515f8
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -139,51 +139,23 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
-  - name: nice_Frame_1
-    originalName: 
-    pivot: {x: 0.5, y: 0}
-    alignment: 9
-    border: {x: 0, y: 0, z: 0, w: 0}
-    rect:
-      serializedVersion: 2
-      x: 4
-      y: 25
-      width: 12
-      height: 14
-    spriteID: efeeab125ff439143b1c977030957647
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 4, y: 25}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -1754505615
-    name: nice
+    guid: 1911708401
+    name: sus
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: nice_Frame_0
+    - name: sus
       frameIndex: 0
       cellRect:
         x: 0
-        y: 2
-        width: 16
-        height: 13
-      spriteId: 17ba8c79550635342a7de7ebb9b9b43c
-    - name: nice_Frame_1
-      frameIndex: 1
-      cellRect:
-        x: 2
         y: 0
-        width: 12
+        width: 15
         height: 14
-      spriteId: efeeab125ff439143b1c977030957647
+      spriteId: ccf84f750d4806f478e1d40d491515f8
     linkedCells: []
     parentIndex: -1
   platformSettings:
