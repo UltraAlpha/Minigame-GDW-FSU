@@ -121,17 +121,6 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-
-        // On the 1st frame down is pressed, and ONLY the first frame, do the following:
-        if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
-        {
-
-            if (currentOneWayPlatform != null)
-            {
-                StartCoroutine(DisableCollision());
-            }
-        }
-
         // Press and hold down to become SUS. Being SUS will change the way square colliders interact with the player on the ground and in the air, but take away all other controls.
         if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
         {
@@ -142,7 +131,9 @@ public class PlayerController : MonoBehaviour
             if (touchGrass && susMode)
             {
                 // If the player is being sussy on the floor AND their BoxCollider2D is touching a box, they will move with the box while down key is held.
-                transform.parent = currentOneWayPlatform.transform; 
+                if (currentOneWayPlatform != null){
+                    transform.parent = currentOneWayPlatform.transform;
+                }
             }
         }
         // Only detach player from box ONCE if they let go of down, not ONCE PER FRAME
@@ -151,7 +142,17 @@ public class PlayerController : MonoBehaviour
             susMode = false;
             // this is overriding the transform.parent change when standing on boxes. This is not how I wanted this to interact.
             transform.parent = null;
+        }
+
+        // On the 1st frame down is pressed, and ONLY the first frame, do the following:
+        if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
+        {
+
+            if (currentOneWayPlatform != null)
+            {
+                StartCoroutine(DisableCollision());
             }
+        }
 
     }
 
