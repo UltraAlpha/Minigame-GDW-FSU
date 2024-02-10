@@ -148,7 +148,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: player_sus
+    m_ConditionEvent: player_hide
     m_EventTreshold: 0
   - m_ConditionMode: 1
     m_ConditionEvent: player_jump
@@ -743,7 +743,7 @@ AnimatorStateMachine:
     m_Position: {x: 260, y: 110, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1344400390312684151}
-    m_Position: {x: 30, y: 50, z: 0}
+    m_Position: {x: 20, y: 50, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -5845696141881077325}
     m_Position: {x: 30, y: 110, z: 0}

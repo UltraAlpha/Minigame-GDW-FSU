@@ -232,7 +232,7 @@ GameObject:
   - component: {fileID: 600423159}
   m_Layer: 0
   m_Name: The Thief
-  m_TagString: Untagged
+  m_TagString: Thief
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -306,6 +306,7 @@ MonoBehaviour:
   touchGrass: 0
   susMode: 0
   isFlipped: 0
+  coinCount: 0
 --- !u!61 &600423157
 BoxCollider2D:
   m_ObjectHideFlags: 0

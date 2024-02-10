@@ -50,6 +50,9 @@ public class PlayerController : MonoBehaviour
     // Boolean to check if sprite should be flipped. Should be set to true if moveX < 0, and false if moveX > 0.
     public bool isFlipped = false;
 
+    // The number of coins collected
+    public int coinCount = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -204,12 +207,21 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        /* Removed due to being a trigger instead of a physics object
         if (col.gameObject.CompareTag("Coin"))
         {
-        // No interactions implemented yet.
+            Debug.Log("Collided with coin");
+            coinCount++;
         }
+        */
 
     }
+    void OnTriggerEnter2D(Collider2D col){
+        Debug.Log("Collided with coin");
+        coinCount++;
+        Destroy(col.gameObject);
+    }
+
     void OnCollisionExit2D(Collision2D col)
     {
         // If player jumped off the floor
