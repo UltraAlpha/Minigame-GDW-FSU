@@ -227,9 +227,9 @@ GameObject:
   - component: {fileID: 600423152}
   - component: {fileID: 600423156}
   - component: {fileID: 600423158}
+  - component: {fileID: 600423160}
   - component: {fileID: 600423157}
   - component: {fileID: 600423159}
-  - component: {fileID: 600423160}
   m_Layer: 0
   m_Name: The Thief
   m_TagString: Untagged
