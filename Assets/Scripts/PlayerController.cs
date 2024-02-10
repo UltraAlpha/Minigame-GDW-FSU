@@ -89,6 +89,7 @@ public class PlayerController : MonoBehaviour
 
         animator.SetBool("player_run", moveX > 0 || moveX < 0);
         animator.SetBool("player_jump", isJumping);
+        animator.SetBool("player_jump_rise", playerRb.velocity.y > 0);
         animator.SetBool("player_sus", susMode);
     }
 
@@ -238,6 +239,7 @@ public class PlayerController : MonoBehaviour
                 // Player still unparents the collider they were standing on as if they had jumped off it.
                 // Sliding with boxes on the ground will call for a different transform.parent; currentOneWayPlatform.
                 transform.parent = null;
+                isOnGround = false;
             }
 
         }
