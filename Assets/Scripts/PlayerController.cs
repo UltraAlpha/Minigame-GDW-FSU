@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
 
     // Rigidbody gameObject for jump physics. Implemented.
     public Rigidbody2D playerRb;
+    public Animator animator;
 
     // Horizontal movement variables. Implemented.
     public int playerSpeed = 10;
@@ -45,6 +46,12 @@ public class PlayerController : MonoBehaviour
 
     // Down key hold boolean. Returns true if held. Locks other keys if true.
     public bool susMode = false;
+
+    // Boolean to check if sprite should be flipped. Should be set to true if moveX < 0, and false if moveX > 0.
+    public bool isFlipped = false;
+
+    // The number of coins collected
+    public int coinCount = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -82,6 +89,11 @@ public class PlayerController : MonoBehaviour
                 transform.parent = null;
             }
         }
+
+        animator.SetBool("player_run", moveX > 0 || moveX < 0);
+        animator.SetBool("player_jump", isJumping);
+        animator.SetBool("player_jump_rise", playerRb.velocity.y > 0);
+        animator.SetBool("player_sus", susMode);
     }
 
     void PlayerMove()
@@ -91,6 +103,14 @@ public class PlayerController : MonoBehaviour
         {
             // Detect horizontal input
             moveX = Input.GetAxis("Horizontal");
+
+            if (moveX < 0 && !isFlipped){
+                isFlipped = true;
+                Flip();
+            } else if (moveX > 0 && isFlipped){
+                isFlipped = false;
+                Flip();
+            }
 
             // Move player left or right depending on moveX and playerSpeed
             transform.Translate(Vector2.right * moveX * Time.deltaTime * playerSpeed);
@@ -104,6 +124,28 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        // Press and hold down to become SUS. Being SUS will change the way square colliders interact with the player on the ground and in the air, but take away all other controls.
+        if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
+        {
+            // This bool locks the other controls while true.
+            susMode = true;
+
+            // If player is being sussy on the floor:
+            if (touchGrass && susMode)
+            {
+                // If the player is being sussy on the floor AND their BoxCollider2D is touching a box, they will move with the box while down key is held.
+                if (currentOneWayPlatform != null){
+                    transform.parent = currentOneWayPlatform.transform;
+                }
+            }
+        }
+        // Only detach player from box ONCE if they let go of down, not ONCE PER FRAME
+        if (Input.GetKeyUp(KeyCode.DownArrow) || Input.GetKeyUp(KeyCode.S))
+        {
+            susMode = false;
+            // this is overriding the transform.parent change when standing on boxes. This is not how I wanted this to interact.
+            transform.parent = null;
+        }
 
         // On the 1st frame down is pressed, and ONLY the first frame, do the following:
         if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
@@ -115,27 +157,12 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        // Press and hold down to become SUS. Being SUS will change the way square colliders interact with the player on the ground and in the air, but take away all other controls.
-        if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
-        {
-            // This bool locks the other controls while true.
-            susMode = true;
+    }
 
-            // If player is being sussy on the floor:
-            if (touchGrass && susMode)
-            {
-                // If the player is being sussy on the floor AND their BoxCollider2D is touching a box, they will move with the box while down key is held.
-                transform.parent = currentOneWayPlatform.transform; 
-            }
-        }
-        // Only detach player from box ONCE if they let go of down, not ONCE PER FRAME
-        if (Input.GetKeyUp(KeyCode.DownArrow) || Input.GetKeyUp(KeyCode.S))
-        {
-            susMode = false;
-            // this is overriding the transform.parent change when standing on boxes. This is not how I wanted this to interact.
-            transform.parent = null;
-            }
-
+    void Flip(){
+        Vector2 scale = transform.localScale;
+        scale.x *= -1;
+        transform.localScale = scale;
     }
 
     // Move player with box if they are standing on it
@@ -180,12 +207,21 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        /* Removed due to being a trigger instead of a physics object
         if (col.gameObject.CompareTag("Coin"))
         {
-        // No interactions implemented yet.
+            Debug.Log("Collided with coin");
+            coinCount++;
         }
+        */
 
     }
+    void OnTriggerEnter2D(Collider2D col){
+        Debug.Log("Collided with coin");
+        coinCount++;
+        Destroy(col.gameObject);
+    }
+
     void OnCollisionExit2D(Collision2D col)
     {
         // If player jumped off the floor
@@ -216,6 +252,7 @@ public class PlayerController : MonoBehaviour
                 // Player still unparents the collider they were standing on as if they had jumped off it.
                 // Sliding with boxes on the ground will call for a different transform.parent; currentOneWayPlatform.
                 transform.parent = null;
+                isOnGround = false;
             }
 
         }
