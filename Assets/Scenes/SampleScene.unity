@@ -502,6 +502,8 @@ GameObject:
   - component: {fileID: 2052340884}
   - component: {fileID: 2052340883}
   - component: {fileID: 2052340882}
+  - component: {fileID: 2052340885}
+  - component: {fileID: 2052340886}
   m_Layer: 0
   m_Name: Background
   m_TagString: Floor
@@ -621,6 +623,45 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2052340885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2052340881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7368e3a06cbc3004482c75d074d334f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bgAnim: {fileID: 2052340886}
+  state: 0
+  minGreen: 6
+  maxGreen: 12
+  minYellow: 3
+  maxYellow: 6
+--- !u!95 &2052340886
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2052340881}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3a338581ae8cad14ba7bc47ba217bcf0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
