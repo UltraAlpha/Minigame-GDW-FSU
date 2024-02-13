@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BoxGoesLeft : MonoBehaviour
 {
+    public GameObject background;
     public int moveSpeed = 3;
     public int leftBound = -17;
     // Start is called before the first frame update

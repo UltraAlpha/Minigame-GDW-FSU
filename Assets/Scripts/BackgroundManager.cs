@@ -4,10 +4,20 @@ using UnityEngine;
 
 public class BackgroundManager : MonoBehaviour
 {
-    // timer float (fetches a random float between the min and max values below, then ticks down frame by frame / sec by sec to 0)
-    // Then, hit the phase_change trigger when it hits 0.
-    public float backgroundTimer;
+    public enum BackgroundState {
+        Green,
+        Yellow,
+        Stopped,
+        FoundYou,
+        WinRound
+    }
     
+    // the animator object for the background
+    public Animator bgAnim;
+
+    // the current background state
+    public BackgroundState state = BackgroundState.Green;
+
     // green to yellow Random.Range floats
     [SerializeField] float minGreen = 6;
     [SerializeField] float maxGreen = 12f;
@@ -19,12 +29,47 @@ public class BackgroundManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        StartCoroutine(StepThroughState());
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    private IEnumerator StepThroughState()
+    {
+        while (true){
+            float greenTime = Random.Range(minGreen, maxGreen);
+            float yellowTime = Random.Range(minYellow, maxYellow);
+
+            yield return new WaitForSeconds(greenTime);
+            state = BackgroundState.Yellow;
+            Debug.Log("state = "+state);
+            bgAnim.SetTrigger("phase_change");
+
+            yield return new WaitForSeconds(yellowTime);
+            state = BackgroundState.Stopped;
+            Debug.Log("state = "+state);
+            bgAnim.SetTrigger("phase_change");
+
+            yield return new WaitForSeconds(1.5f);
+
+            // replace "false" with logic here to determine if player is behind block
+            if (false){
+                state = BackgroundState.FoundYou;
+                break;
+            } else {
+                state = BackgroundState.WinRound;
+                Debug.Log("state = "+state);
+                bgAnim.SetTrigger("phase_change");
+                yield return new WaitForSeconds(1.5f);
+
+                state = BackgroundState.Green;
+                Debug.Log("state = "+state);
+                bgAnim.SetTrigger("phase_change");
+            }
+        }
     }
 }
